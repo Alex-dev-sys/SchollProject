@@ -1,4 +1,4 @@
-import { Select , Space, Typography, Flex, Divider, Form, InputNumber, Button} from "antd"
+import { Select , Space, Typography, Flex, Divider, Form, InputNumber, Button, DatePicker} from "antd"
 import { useState } from "react"
 import { useCrypto } from "../../context/crypto-context"
 
@@ -42,7 +42,7 @@ export default function AddAssetForm() {
           name="basic"
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 10 }}
-          style={{ maxWidth: 600 }}
+          style={{ maxWidth: 600}}
           initialValues={{ remember: true }}
           onFinish={onFinish}
 
@@ -56,15 +56,29 @@ export default function AddAssetForm() {
             name="amount"
             rules={[{ required: true, type:'number', min: 0, message: 'Please input your username!' }]}
         >
-          <InputNumber />
+          <InputNumber style={{width:'100%'}}/>
         </Form.Item>
 
         <Form.Item
             label="Price"
             name="price"
         >
-          <InputNumber />
+          <InputNumber disabled style={{width:'100%'}}/>
         </Form.Item>
+
+          <Form.Item
+              label="Total"
+              name="total"
+          >
+              <InputNumber disabled style={{width:'100%'}}/>
+          </Form.Item>
+
+          <Form.Item
+              label="Date & Time"
+              name="date"
+          >
+              <DatePicker showTime />
+          </Form.Item>
 
         <Form.Item >
           <Button type="primary" htmlType="submit">
