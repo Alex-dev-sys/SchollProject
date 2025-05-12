@@ -21,7 +21,7 @@ export default function AppHeader() {
   const [select, setSelect] = useState(false)
   const [modal, setModal] = useState(false)
   const [coin, setCoin] = useState(null)
-  const [drawer, setDrawer] = useState(true)
+  const [drawer, setDrawer] = useState(false)
   const {crypto} = useCrypto()
 
 
@@ -67,16 +67,17 @@ export default function AppHeader() {
 
       <Modal
         open={modal}
-        onOk={() => setModal(false)}
         onCancel={() => setModal(false)}
         footer={null}
       >
         <CoinInfoModal coin={coin}/>
       </Modal>
-      <Drawer title='Add Asset'
-              onClose={() => setDrawer(false)}
-              open={drawer} width={540}
-              destroyOnClose
+      <Drawer
+        title='Add Asset'
+        onClose={() => setDrawer(false)}
+        open={drawer}
+        width={540}
+        destroyOnClose
       >
         <AddAssetForm onclose={() => setDrawer(false)}/>
       </Drawer>
